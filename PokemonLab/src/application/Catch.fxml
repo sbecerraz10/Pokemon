@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="755.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.CatchController">
+   <center>
+      <Pane fx:id="pane_big" prefHeight="400.0" prefWidth="400.0" BorderPane.alignment="CENTER">
+         <children>
+            <ImageView fitHeight="442.0" fitWidth="755.0">
+               <image>
+                  <Image url="@../../images/field.png" />
+               </image>
+            </ImageView>
+            <Pane fx:id="pane_flag" layoutX="50.0" layoutY="230.0" prefHeight="101.0" prefWidth="130.0" />
+            <Pane fx:id="pane_pokemon" layoutX="600.0" layoutY="222.0" prefHeight="127.0" prefWidth="150.0" />
+            <Label layoutX="22.0" layoutY="12.0" text="Player Name:">
+               <font>
+                  <Font name="Dubai Light" size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="22.0" layoutY="37.0" text="Score:">
+               <font>
+                  <Font name="Dubai Light" size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="22.0" layoutY="62.0" text="Time:">
+               <font>
+                  <Font name="Dubai Light" size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="lbplayer_name" layoutX="105.0" layoutY="12.0" prefHeight="25.0" prefWidth="160.0">
+               <font>
+                  <Font name="Dubai Light" size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="lbscore" layoutX="70.0" layoutY="37.0" prefHeight="25.0" prefWidth="83.0">
+               <font>
+                  <Font name="Dubai Light" size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="lbtime" layoutX="70.0" layoutY="62.0" prefHeight="25.0" prefWidth="83.0">
+               <font>
+                  <Font name="Dubai Light" size="14.0" />
+               </font>
+            </Label>
+         </children>
+         <BorderPane.margin>
+            <Insets />
+         </BorderPane.margin>
+      </Pane>
+   </center>
+   <top>
+      <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+            <ImageView fitHeight="157.0" fitWidth="757.0">
+               <image>
+                  <Image url="@../../images/International_Pokémon_logo.png" />
+               </image>
+            </ImageView>
+         </children>
+      </HBox>
+   </top>
+</BorderPane>

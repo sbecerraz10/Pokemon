@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane fx:id="bpane" prefHeight="428.0" prefWidth="759.0" style="-fx-background-image: 8;" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.RegisterController">
+   <center>
+      <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+            <Button fx:id="btopenplayer" layoutX="280.0" layoutY="130.0" mnemonicParsing="false" prefHeight="74.0" prefWidth="199.0" text="Existing Player">
+               <font>
+                  <Font name="Dubai Light" size="18.0" />
+               </font>
+            </Button>
+            <Button fx:id="btaddplayer" layoutX="280.0" layoutY="230.0" mnemonicParsing="false" prefHeight="74.0" prefWidth="199.0" text="New Player">
+               <font>
+                  <Font name="Dubai Light" size="18.0" />
+               </font>
+            </Button>
+         </children>
+      </Pane>
+   </center>
+</BorderPane>
