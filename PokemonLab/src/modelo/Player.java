@@ -5,7 +5,7 @@ import java.io.Serializable;
 /**
  * Class Player
  * @author Sebastian Becerra Z. A00352804
- * @version sept-20-2018
+ * @version oct-01-2018
  */
 public class Player implements Serializable {
 
@@ -13,19 +13,16 @@ public class Player implements Serializable {
 	//Atributos
 	
 	private String name;
-	private int score_throw;
-	private int score_catch;
+	private int score;
 	
 	/**
 	 * Constructor
 	 * @param name :name of the player
-	 * @param score_throw :score of the throw mode
-	 * @param score_catch :score of the catch mode
+	 * @param score :score of the player
 	 */
-	public Player(String name, int score_throw, int score_catch) {
+	public Player(String name,int score) {
 		this.name = name;
-		this.score_throw = score_throw;
-		this.score_catch = score_catch;
+		this.score = score;
 	}
 
 	public String getName() {
@@ -36,21 +33,15 @@ public class Player implements Serializable {
 		this.name = name;
 	}
 
-	public int getScore_throw() {
-		return score_throw;
+	public int getScore() {
+		return score;
 	}
 
-	public void setScore_throw(int score_throw) {
-		this.score_throw = score_throw;
+	public void setScore(int score) {
+		this.score = score;
 	}
 
-	public int getScore_catch() {
-		return score_catch;
-	}
 
-	public void setScore_catch(int score_catch) {
-		this.score_catch = score_catch;
-	}
 
 	
 	

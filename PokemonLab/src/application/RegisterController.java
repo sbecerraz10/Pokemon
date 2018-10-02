@@ -58,7 +58,12 @@ public class RegisterController {
 			
 			@Override
 			public void handle(MouseEvent t) {
-				
+				try {
+					openChoosePlayer(t);
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 			}
 			
 		});
@@ -78,7 +83,7 @@ public class RegisterController {
 				if (result.isPresent()){
 				    
 				    String name = result.get();
-				    Player p = new Player(name,0,0);
+				    Player p = new Player(name,0);
 				    //training.setPlayer(p);
 				    try {
 						openMenu(t,p);
@@ -113,6 +118,19 @@ public class RegisterController {
 			Parent showMenu = loader.load();
 			MenuController mc =  loader.getController();
 			mc.initialize(p);
+			Scene sceneMenu = new Scene(showMenu);
+			Stage windowMenu = (Stage)((Node) t.getSource()).getScene().getWindow();
+			windowMenu.setScene(sceneMenu);
+			windowMenu.show();
+		}catch(IOException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public void openChoosePlayer(MouseEvent t) throws Exception {
+		try {
+			FXMLLoader loader =new FXMLLoader(getClass().getResource("ChoosePlayer.fxml")); 
+			Parent showMenu = loader.load();
 			Scene sceneMenu = new Scene(showMenu);
 			Stage windowMenu = (Stage)((Node) t.getSource()).getScene().getWindow();
 			windowMenu.setScene(sceneMenu);

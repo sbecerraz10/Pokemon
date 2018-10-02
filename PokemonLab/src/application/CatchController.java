@@ -1,6 +1,13 @@
 package application;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.net.URL;
+import java.util.ArrayList;
 
 import javafx.animation.Animation;
 import javafx.animation.TranslateTransition;
@@ -8,6 +15,7 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.image.Image;
@@ -35,7 +43,8 @@ public class CatchController {
 	private Label lbscore;
 	@FXML
 	private Label lbtime;
-	
+	@FXML
+	private Button btSavegame;
 	
 	
 	public static final int LIMIT = 600;
@@ -61,10 +70,9 @@ public class CatchController {
 	 */
 	public void initialize(URL link, Player p) {
 		
-		
 		startAnimation(link);
 			lbplayer_name.setText(p.getName());
-			lbscore.setText(p.getScore_catch()+"");
+			lbscore.setText(p.getScore()+"");
 			lbtime.setText(transition.getCurrentTime().toSeconds()+"");
 		
 		
@@ -76,7 +84,9 @@ public class CatchController {
 					transition.stop();
 					pane_pokemon.getChildren().clear();
 					pane_pokemon.getChildren().add(new ImageView(new Image("/images/Pokebola.png".toString(),100,100,false,true)));
-					
+					int score_catch = 50;
+					score_catch +=50;
+					p.setScore(score_catch);
 				}
 			}
 			
@@ -92,6 +102,18 @@ public class CatchController {
 			}
 			
 		});
+		
+		
+		
+
+		
+		btSavegame.setOnMouseClicked(new EventHandler<MouseEvent>() {
+			@Override
+			public void handle(MouseEvent t) {
+					loadPlayers(p);
+			}
+		});
+		
 		
 		
 	}
@@ -112,5 +134,64 @@ public class CatchController {
 		
 	}
 	
+	
+	public int setScore() {
+		int score = 0;
+		
+		
+		
+		
+		
+		
+		
+		return score;
+	}
+	
+	public void savePlayer(Player player, ArrayList<Player> p) {
+
+		FileOutputStream fileOutS = null;
+		ObjectOutputStream salida = null;
+
+		try
+		{
+			
+			fileOutS = new FileOutputStream("file/players.ser");
+			salida = new ObjectOutputStream(fileOutS);
+			p.add(player);
+			salida.writeObject(p);
+			salida.close();
+			fileOutS.close();
+			
+			Alert alert = new Alert(AlertType.INFORMATION);
+			alert.setTitle("Saved");
+			alert.setHeaderText("Information");
+			alert.setContentText("The player has been saved successfully");
+			System.out.println(p);
+			alert.showAndWait();
+		}catch(FileNotFoundException e)
+		{
+			System.out.println(e.getMessage());
+		}catch(IOException e)
+		{
+			System.out.println(e.getMessage());
+		}	
+	}
+	
+	
+	public void loadPlayers(Player player) {
+		ArrayList<Player> p = new ArrayList<Player>();
+		
+		try {
+			FileInputStream filein= new FileInputStream("file/players.ser");
+			ObjectInputStream obj = new ObjectInputStream(filein);
+			p = (ArrayList<Player>) obj.readObject();
+			savePlayer(player,p);
+			obj.close();
+			filein.close();
+			System.out.println(p.size());
+		}catch(Exception e) {
+			savePlayer(player,p);
+		}
+	}
 	
 }

@@ -1,8 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
 
 
-<BorderPane prefHeight="600.0" prefWidth="800.0" style="-fx-background-image: images/Pokeomon.jpg;" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/10.0.1">
-	<!-- TODO Add Nodes -->
+<BorderPane prefHeight="600.0" prefWidth="800.0" style="-fx-background-image: images/Pokeomon.jpg;" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.ChoosePlayerController">
+   <center>
+      <Pane prefHeight="600.0" prefWidth="800.0" BorderPane.alignment="CENTER">
+         <children>
+            <ImageView fitHeight="600.0" fitWidth="800.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../images/Pokemon.jpg" />
+               </image>
+            </ImageView>
+            <Button fx:id="btConfirm" layoutX="615.0" layoutY="268.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="119.0" style="-fx-background-color: #FF0000; -fx-text-fill: #000000; -fx-border-color: 00000000;" text="Confirm">
+               <font>
+                  <Font name="Dubai Light" size="16.0" />
+               </font>
+            </Button>
+            <ListView fx:id="lv_players" layoutX="65.0" layoutY="59.0" prefHeight="443.0" prefWidth="339.0" style="-fx-border-color: 00000000;" />
+            <Label layoutX="54.0" layoutY="6.0" prefHeight="50.0" prefWidth="381.0" text="Please, choose your name" textFill="SNOW">
+               <font>
+                  <Font name="Dubai Light" size="24.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+   </center>
 </BorderPane>
