@@ -126,6 +126,26 @@ public class ThrowController {
 	
 
 	
+	public int setScore() {
+		int score = 0;
+		
+		
+		
+		
+		
+		
+		
+		return score;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	public void savePlayer(Player player, ArrayList<Player> p) {
 
 		FileOutputStream fileOutS = null;
