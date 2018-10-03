@@ -46,7 +46,7 @@ import modelo.Training;
 /**
  * Clase MenuController
  * @author Sebastian Becerra Z. A00352804
- * @version sep-18-2018
+ * @version oct-02-2018
  */
 
 public class MenuController{
@@ -104,11 +104,8 @@ public class MenuController{
 
 			@Override
 			public void changed(ObservableValue ov, String oldValue, String newValue) {
-				// TODO Auto-generated method stub
-				//String option = pokemon_option.getValue().toString();
-				//System.out.println(pokemon_option.getValue());
-				System.out.println(pokemon_option.getValue());
-				String option = "Pikachu";
+				
+				String option = (String) pokemon_option.getValue();
 				if(!option.isEmpty()) {
 					//Enable Buttons
 					btthrowpk.setDisable(false);
@@ -124,6 +121,7 @@ public class MenuController{
 							//Then We Show The Preview
 							pane_preview.getChildren().add(new ImageView(new Image(training.getPokemons().get(i).getLinkgif().toString(),100,100,false,true)));
 							link = training.getPokemons().get(i).getLinkgif();
+							System.out.println(training.getPokemons().size());
 							stop = true;
 						}if(times==training.getPokemons().size()) {
 							stop = true;
@@ -183,52 +181,6 @@ public class MenuController{
 	}
 
 
-//	public void loadpokemons() {
-//		// TODO Auto-generated method stub
-//		FileInputStream fileInStr = null;
-//        ObjectInputStream entrada = null;
-//        Pokemon p;
-//
-//        try {		
-//        	//Read the file that contents the pokemons
-//        	fileInStr = new FileInputStream("pok.dat");
-//            entrada = new ObjectInputStream(fileInStr);
-//            boolean valid = true;
-////             for(int i=0;valid;i++) {
-////        	   if(entrada.available()>0) {
-////        		   p = (Pokemon)entrada.readObject();
-////        		   pokemons.add(p);
-////        	    }else valid = false;
-////             }
-//            p = (Pokemon) entrada.readObject();
-//             pokemons.add(p);
-//             System.out.println(pokemons.size());
-//             System.out.println(p.getName());
-//             
-//            
-//        } catch (FileNotFoundException e) {
-//        	System.out.println("I dont exist");
-//    		e.getMessage();
-//    		loadPokForFirstTime();
-//        } catch (IOException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		} catch (ClassNotFoundException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}finally {
-//            try {
-//                if (fileInStr != null) {
-//                	fileInStr.close();
-//                }
-//                if (entrada != null) {
-//                    entrada.close();
-//                }
-//            } catch (IOException e) {
-//                System.out.println(e.getMessage());
-//            }
-//        }
-//	}
 
 
 	public void setWallpaper() {
@@ -243,42 +195,6 @@ public class MenuController{
 		
 	}
 	
-	
-	
-	
-//	public void loadPokForFirstTime() {
-//		FileOutputStream fileout = null;
-//		ObjectOutputStream objectout = null;
-//		Pokemon pikachu = null;
-//		//String pikachu = null;
-//		
-//		try {
-//			fileout = new FileOutputStream("pok.dat");
-//			objectout= new ObjectOutputStream(fileout);
-//
-//			URL linkimagepikachu = getClass().getResource("images/Pikachu.jpg");
-//			URL linkgifpikachu = getClass().getResource("images/Pikachu_running.gif");
-//			pikachu = new Pokemon("Pikachu",linkimagepikachu,linkgifpikachu);
-//			//pikachu= "SIIII";
-//			objectout.writeObject(pikachu);
-//			System.out.print("Already Serialized");
-//		}catch(FileNotFoundException e) {
-//			e.getMessage();
-//		}catch(IOException e) {
-//			e.getMessage();
-//		}finally {
-//			try {
-//				if (pikachu != null)
-//					fileout.close();
-//				if (objectout!= null)
-//					objectout.close();
-//			} catch (IOException e) {
-//				System.out.println(e.getMessage());
-//			}
-//
-//		}
-//			
-//	}
 	
 	
 

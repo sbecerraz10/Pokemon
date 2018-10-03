@@ -2,6 +2,7 @@ package modelo;
 
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Comparator;
 
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -17,7 +18,6 @@ public class Training {
 	
 	private ArrayList<Player> players;
 	
-	private int idClick;
 	
 	
 	/**
@@ -28,7 +28,6 @@ public class Training {
 		pokemons = new <Pokemon>ArrayList();
 		players = new <Player>ArrayList();
 		createPokemons();
-		idClick = 1;
 	}
 	
 	
@@ -57,6 +56,11 @@ public class Training {
 	 */
 	public ArrayList<Player> getPlayers(){
 		return players;
+	}
+	
+	
+	public void setPlayers(ArrayList<Player> players) {
+		this.players = players;
 	}
 	
 	
@@ -100,19 +104,6 @@ public class Training {
 	}
 
 
-	/**
-	 * Method setIdClick
-	 * @param idClick: 1 2 or 3 , it depends of the kind of Pokemon
-	 */
-	public void setIdClick(int idClick) {
-		this.idClick = idClick;
-	}
-	/**
-	 * Method getIdClick
-	 * @return idCLick: id of the pokemon
-	 */
-	public int getIdClick() {
-		return idClick;
-	}
+
 	
 }

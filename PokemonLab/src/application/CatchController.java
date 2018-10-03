@@ -30,7 +30,7 @@ import modelo.Player;
  * @version sep-18-2018
  */
 
-public class CatchController {
+public class CatchController{
 
 	//Atributos
 	@FXML
@@ -84,9 +84,9 @@ public class CatchController {
 					transition.stop();
 					pane_pokemon.getChildren().clear();
 					pane_pokemon.getChildren().add(new ImageView(new Image("/images/Pokebola.png".toString(),100,100,false,true)));
-					int score_catch = 50;
-					score_catch +=50;
-					p.setScore(score_catch);
+					
+					p.setScore(pane_pokemon.getTranslateX()*-1);
+					lbscore.setText(p.getScore()+"");
 				}
 			}
 			
@@ -135,17 +135,6 @@ public class CatchController {
 	}
 	
 	
-	public int setScore() {
-		int score = 0;
-		
-		
-		
-		
-		
-		
-		
-		return score;
-	}
 	
 	public void savePlayer(Player player, ArrayList<Player> p) {
 
@@ -193,5 +182,9 @@ public class CatchController {
 			savePlayer(player,p);
 		}
 	}
+
+
+
+	
 	
 }

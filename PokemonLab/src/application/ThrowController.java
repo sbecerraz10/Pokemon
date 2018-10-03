@@ -100,7 +100,8 @@ public class ThrowController {
 				pane_pokemon.getChildren().add(new ImageView(new Image(link.toString(),100,100,false,true)));
 				transition.setToX(-550);
 				transition.play();
-				
+				player.setScore(600-Player.POINT3_SCORE);
+				lbscore.setText(player.getScore()+"");
 			}
 			
 		});
@@ -109,7 +110,7 @@ public class ThrowController {
 		transition.setOnFinished(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent t) {
-			
+					
 				
 					transition.stop();
 					Alert alert = new Alert(AlertType.INFORMATION);
@@ -117,7 +118,8 @@ public class ThrowController {
 					alert.setHeaderText("Distancia recorrida por el pokemon");
 					alert.setContentText(pane_pokemon.getTranslateX()*-1+"");
 					alert.show();
-				
+					
+			
 			}
 			
 		});
@@ -125,24 +127,6 @@ public class ThrowController {
 	}
 	
 
-	
-	public int setScore() {
-		int score = 0;
-		
-		
-		
-		
-		
-		
-		
-		return score;
-	}
-	
-	
-	
-	
-	
-	
 	
 	
 	

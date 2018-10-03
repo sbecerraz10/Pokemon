@@ -9,11 +9,16 @@ import java.util.List;
 import javafx.collections.FXCollections;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.ListView;
 import javafx.scene.control.SelectionMode;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.Stage;
 import modelo.Player;
 
 
@@ -50,8 +55,19 @@ public class ChoosePlayerController {
 		btConfirm.setOnMouseClicked(new EventHandler<MouseEvent>() {
 			@Override
 			public void handle(MouseEvent t) {
+				String name = (String) lv_players.getSelectionModel().getSelectedItem();
+				for(int i=0;i<players.size();i++) {
+					if(players.get(i).getName().equals(name)) {
+						Player p = players.get(i);
+						try {
+							openMenu(t,p);
+						} catch (Exception e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+					}
+				}
 				
-				openMenu();
 			}
 
 			
@@ -89,9 +105,21 @@ public class ChoosePlayerController {
 		return names;
 	}
 	
-	public void openMenu() {
-		// TODO Auto-generated method stub
-		
-	}
 	
+	
+	public void openMenu(MouseEvent t,Player p) throws Exception {
+		try {
+			FXMLLoader loader =new FXMLLoader(getClass().getResource("Menu.fxml")); 
+			Parent showMenu = loader.load();
+			MenuController mc =  loader.getController();
+			mc.initialize(p);
+			Scene sceneMenu = new Scene(showMenu);
+			Stage windowMenu = (Stage)((Node) t.getSource()).getScene().getWindow();
+			windowMenu.setScene(sceneMenu);
+			windowMenu.show();
+		}catch(IOException e) {
+			e.printStackTrace();
+		}
+	}
+
 }

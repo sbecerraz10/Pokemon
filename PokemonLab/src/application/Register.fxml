@@ -9,12 +9,22 @@
    <center>
       <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <Button fx:id="btopenplayer" layoutX="280.0" layoutY="130.0" mnemonicParsing="false" prefHeight="74.0" prefWidth="199.0" text="Existing Player">
+            <Button fx:id="btopenplayer" layoutX="280.0" layoutY="53.0" mnemonicParsing="false" prefHeight="74.0" prefWidth="199.0" text="Existing Player">
                <font>
                   <Font name="Dubai Light" size="18.0" />
                </font>
             </Button>
-            <Button fx:id="btaddplayer" layoutX="280.0" layoutY="230.0" mnemonicParsing="false" prefHeight="74.0" prefWidth="199.0" text="New Player">
+            <Button fx:id="btaddplayer" layoutX="280.0" layoutY="140.0" mnemonicParsing="false" prefHeight="74.0" prefWidth="199.0" text="New Player">
+               <font>
+                  <Font name="Dubai Light" size="18.0" />
+               </font>
+            </Button>
+            <Button fx:id="btbyscore" layoutX="280.0" layoutY="227.0" mnemonicParsing="false" prefHeight="74.0" prefWidth="199.0" text="Stat by Score">
+               <font>
+                  <Font name="Dubai Light" size="18.0" />
+               </font>
+            </Button>
+            <Button fx:id="btbyname" layoutX="280.0" layoutY="321.0" mnemonicParsing="false" prefHeight="74.0" prefWidth="199.0" text="Stat by Name">
                <font>
                   <Font name="Dubai Light" size="18.0" />
                </font>

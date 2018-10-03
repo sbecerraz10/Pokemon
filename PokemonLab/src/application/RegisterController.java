@@ -36,6 +36,13 @@ public class RegisterController {
 	private Button btopenplayer;
 	@FXML
 	private Button btaddplayer;
+	@FXML
+	private Button btbyname;
+	@FXML
+	private Button btbyscore;
+	
+	
+	
 	
 	//private Training training;
 	
@@ -98,6 +105,29 @@ public class RegisterController {
 		
 		
 		
+		btbyscore.setOnMouseClicked(new EventHandler<MouseEvent>() {
+			@Override
+			public void handle(MouseEvent t) {
+				try {
+					openByScore(t);
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		});
+		
+		btbyname.setOnMouseClicked(new EventHandler<MouseEvent>() {
+			@Override
+			public void handle(MouseEvent t) {
+				try {
+					openByName(t);
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		});
 		
 	}
 	public void setWallpaper() {
@@ -110,6 +140,35 @@ public class RegisterController {
 	            bSize));
 		bpane.setBackground(background2);
 		
+	}
+	
+	public void openByScore(MouseEvent t) throws Exception {
+		try {
+			FXMLLoader loader =new FXMLLoader(getClass().getResource("ByScore.fxml")); 
+			Parent showMenu = loader.load();
+			ByScoreController mc =  loader.getController();
+			Scene sceneMenu = new Scene(showMenu);
+			Stage windowMenu = (Stage)((Node) t.getSource()).getScene().getWindow();
+			windowMenu.setScene(sceneMenu);
+			windowMenu.show();
+		}catch(IOException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	
+	public void openByName(MouseEvent t) throws Exception {
+		try {
+			FXMLLoader loader =new FXMLLoader(getClass().getResource("ByName.fxml")); 
+			Parent showMenu = loader.load();
+			ByNameController mc =  loader.getController();
+			Scene sceneMenu = new Scene(showMenu);
+			Stage windowMenu = (Stage)((Node) t.getSource()).getScene().getWindow();
+			windowMenu.setScene(sceneMenu);
+			windowMenu.show();
+		}catch(IOException e) {
+			e.printStackTrace();
+		}
 	}
 	
 	public void openMenu(MouseEvent t,Player p) throws Exception {

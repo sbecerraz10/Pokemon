@@ -1,16 +1,29 @@
 package modelo;
 
 import java.io.Serializable;
+import java.util.Comparator;
+
+import application.CatchController;
 
 /**
  * Class Player
  * @author Sebastian Becerra Z. A00352804
  * @version oct-01-2018
  */
-public class Player implements Serializable {
+public class Player implements Serializable, Comparable<Player> {
 
 	
-	//Atributos
+	//Atributos y Constantes
+	
+	public static double POINT1 = 250;
+	public static double POINT2 = 500;
+	public static double POINT3 = 750;
+	
+	public static int POINT1_SCORE = 750;
+	public static int POINT2_SCORE = 500;
+	public static int POINT3_SCORE = 250;
+	
+	
 	
 	private String name;
 	private int score;
@@ -37,10 +50,27 @@ public class Player implements Serializable {
 		return score;
 	}
 
-	public void setScore(int score) {
-		this.score = score;
+	public void setScore(double x) {
+		
+		if(x < POINT1) {
+			score+= POINT1_SCORE;
+		}else if(x < POINT2 && x > POINT1) {
+			score += POINT2_SCORE;
+		}else if(x < POINT3 && x > POINT2) {
+			score += POINT3_SCORE;
+		}
+		
+		
 	}
 
+
+	
+	@Override
+	public int compareTo(Player other) {
+		// TODO Auto-generated method stub
+		 return this.getScore() > other.getScore() ? 1 : this.getScore() < other.getScore() ? -1 : 0;
+	
+	}
 
 
 	
