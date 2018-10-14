@@ -40,11 +40,18 @@ public class RegisterController {
 	private Button btbyname;
 	@FXML
 	private Button btbyscore;
+	@FXML
+	private Button btsearchplayer;
+	@FXML
+	private Button btsearchplayer1;
+	@FXML
+	private Button btsearchpokemon;
+	@FXML
+	private Button btsearchpokemon1;
+	
+	private Main main;
 	
 	
-	
-	
-	//private Training training;
 	
 	
 	public RegisterController() {
@@ -55,7 +62,6 @@ public class RegisterController {
 	
 	
 	public void initialize() {
-		//training = new Training();
 		setWallpaper();
 		
 		
@@ -129,6 +135,35 @@ public class RegisterController {
 			}
 		});
 		
+		btsearchplayer.setOnMouseClicked(new EventHandler<MouseEvent>() {
+			public void handle(MouseEvent t) {
+				try {
+					openSearchPlayer(t);
+				}catch(Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+		
+		btsearchplayer1.setOnMouseClicked(new EventHandler<MouseEvent>() {
+			public void handle(MouseEvent t) {
+				try {
+					openSearchOnePlayer(t);
+				}catch(Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+		
+		btsearchpokemon1.setOnMouseClicked(new EventHandler<MouseEvent>() {
+			public void handle(MouseEvent t) {
+				try {
+					openSearchOnePokemon(t);
+				}catch(Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});		
 	}
 	public void setWallpaper() {
 		Image image1 = new Image("images/pokemon-background-.jpg");
@@ -146,16 +181,58 @@ public class RegisterController {
 		try {
 			FXMLLoader loader =new FXMLLoader(getClass().getResource("ByScore.fxml")); 
 			Parent showMenu = loader.load();
-			ByScoreController mc =  loader.getController();
 			Scene sceneMenu = new Scene(showMenu);
 			Stage windowMenu = (Stage)((Node) t.getSource()).getScene().getWindow();
 			windowMenu.setScene(sceneMenu);
+			windowMenu.getIcons().add(new Image("images/Pokebola.png"));
+			windowMenu.show();
+		}catch(IOException e) {
+			e.printStackTrace();
+		}
+	}
+		
+
+	public void openSearchPlayer(MouseEvent t) throws Exception {
+		try {
+			FXMLLoader loader =new FXMLLoader(getClass().getResource("SearchPlayer.fxml")); 
+			Parent showMenu = loader.load();
+			Scene sceneMenu = new Scene(showMenu);
+			Stage windowMenu = (Stage)((Node) t.getSource()).getScene().getWindow();
+			windowMenu.setScene(sceneMenu);
+			windowMenu.getIcons().add(new Image("images/Pokebola.png"));
 			windowMenu.show();
 		}catch(IOException e) {
 			e.printStackTrace();
 		}
 	}
 	
+	public void openSearchOnePlayer(MouseEvent t) throws Exception {
+		try {
+			FXMLLoader loader =new FXMLLoader(getClass().getResource("SearchOnePlayer.fxml")); 
+			Parent showMenu = loader.load();
+			Scene sceneMenu = new Scene(showMenu);
+			Stage windowMenu = (Stage)((Node) t.getSource()).getScene().getWindow();
+			windowMenu.setScene(sceneMenu);
+			windowMenu.getIcons().add(new Image("images/Pokebola.png"));
+			windowMenu.show();
+		}catch(IOException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public void openSearchOnePokemon(MouseEvent t) throws Exception {
+		try {
+			FXMLLoader loader =new FXMLLoader(getClass().getResource("SearchOnePokemon.fxml")); 
+			Parent showMenu = loader.load();
+			Scene sceneMenu = new Scene(showMenu);
+			Stage windowMenu = (Stage)((Node) t.getSource()).getScene().getWindow();
+			windowMenu.setScene(sceneMenu);
+			windowMenu.getIcons().add(new Image("images/Pokebola.png"));
+			windowMenu.show();
+		}catch(IOException e) {
+			e.printStackTrace();
+		}
+	}
 	
 	public void openByName(MouseEvent t) throws Exception {
 		try {
@@ -164,6 +241,7 @@ public class RegisterController {
 			ByNameController mc =  loader.getController();
 			Scene sceneMenu = new Scene(showMenu);
 			Stage windowMenu = (Stage)((Node) t.getSource()).getScene().getWindow();
+			windowMenu.getIcons().add(new Image("images/Pokebola.png"));
 			windowMenu.setScene(sceneMenu);
 			windowMenu.show();
 		}catch(IOException e) {
@@ -179,6 +257,7 @@ public class RegisterController {
 			mc.initialize(p);
 			Scene sceneMenu = new Scene(showMenu);
 			Stage windowMenu = (Stage)((Node) t.getSource()).getScene().getWindow();
+			windowMenu.getIcons().add(new Image("images/Pokebola.png"));
 			windowMenu.setScene(sceneMenu);
 			windowMenu.show();
 		}catch(IOException e) {
@@ -192,11 +271,14 @@ public class RegisterController {
 			Parent showMenu = loader.load();
 			Scene sceneMenu = new Scene(showMenu);
 			Stage windowMenu = (Stage)((Node) t.getSource()).getScene().getWindow();
+			windowMenu.getIcons().add(new Image("images/Pokebola.png"));
 			windowMenu.setScene(sceneMenu);
 			windowMenu.show();
 		}catch(IOException e) {
 			e.printStackTrace();
 		}
 	}
+	
+	
 	
 }

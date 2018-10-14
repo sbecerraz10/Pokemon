@@ -17,9 +17,11 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.ListView;
 import javafx.scene.control.SelectionMode;
+import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import modelo.Player;
+import modelo.Training;
 
 
 
@@ -31,9 +33,7 @@ public class ChoosePlayerController {
 	@FXML
 	private Button btConfirm;
 	
-	private ArrayList<Player> players;
-	
-	
+	private Main main;
 	
 	public ChoosePlayerController() {
 		
@@ -43,8 +43,7 @@ public class ChoosePlayerController {
 	
 	
 	public void initialize() {
-		players = new ArrayList<Player>();
-		loadPlayers();
+		main.loadPlayers();
 		//System.out.println(players.size());
 		lv_players.getItems().addAll(FXCollections.observableList(listForShow()));
 		lv_players.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
@@ -56,11 +55,12 @@ public class ChoosePlayerController {
 			@Override
 			public void handle(MouseEvent t) {
 				String name = (String) lv_players.getSelectionModel().getSelectedItem();
-				for(int i=0;i<players.size();i++) {
-					if(players.get(i).getName().equals(name)) {
-						Player p = players.get(i);
+				for(int i=0;i<main.getTraining().getPlayers().size();i++) {
+					if(main.getTraining().getPlayers().get(i).getName().equals(name)) {
+						Player p = main.getTraining().getPlayers().get(i);
 						try {
 							openMenu(t,p);
+							break;
 						} catch (Exception e) {
 							// TODO Auto-generated catch block
 							e.printStackTrace();
@@ -75,32 +75,14 @@ public class ChoosePlayerController {
 		
 		
 	}
-	
-	
-	public void loadPlayers() {
-		ArrayList<Player> playersclone = (ArrayList<Player>) players.clone();
-		
-		try {
-			FileInputStream filein = new FileInputStream("file/players.ser");
-			ObjectInputStream obj = new ObjectInputStream(filein);
-			playersclone = (ArrayList<Player>) obj.readObject();
-			players = playersclone;
-			obj.close();
-			filein.close();
-		}catch(Exception e) {
-			e.printStackTrace();
-		}finally {
-		
-		}
-		
-	}
+
 	
 	
 	public List<String>listForShow() {
 		// TODO Auto-generated method stub
 		ArrayList<String> names = new <String>ArrayList();
-		for(int i=0;i<players.size();i++) {	
-			names.add(players.get(i).getName());
+		for(int i=0;i<main.getTraining().getPlayers().size();i++) {	
+			names.add(main.getTraining().getPlayers().get(i).getName());
 		}
 		return names;
 	}
@@ -115,6 +97,7 @@ public class ChoosePlayerController {
 			mc.initialize(p);
 			Scene sceneMenu = new Scene(showMenu);
 			Stage windowMenu = (Stage)((Node) t.getSource()).getScene().getWindow();
+			windowMenu.getIcons().add(new Image("images/Pokebola.png"));
 			windowMenu.setScene(sceneMenu);
 			windowMenu.show();
 		}catch(IOException e) {

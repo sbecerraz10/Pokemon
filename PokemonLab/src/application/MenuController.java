@@ -69,10 +69,11 @@ public class MenuController{
 	@FXML
 	private BorderPane bpane;
 	
-	private Training training;
 	
+	private Main main;
 	
-	private URL link;
+	private Pokemon pokemon;
+	
 	
 	public MenuController() {
 		
@@ -80,8 +81,7 @@ public class MenuController{
 	
 	
 	public void initialize(Player p) {
-
-		training = new Training();
+		pokemon = new Pokemon();
 		setWallpaper();
 		btthrowpk.setDisable(true);
 		btcatchpk.setDisable(true);
@@ -111,19 +111,17 @@ public class MenuController{
 					btthrowpk.setDisable(false);
 					btcatchpk.setDisable(false);
 					//Search for the pokemon selected
-					Pokemon pk = null;
 					boolean stop = false;
 					int times = 0;
-					for(int i=0;i<training.getPokemons().size() || !stop ;i++) {
+					for(int i=0;i<main.getTraining().getPokemons().size() || !stop ;i++) {
 						
-						if(option.equals(training.getPokemons().get(i).getName())) {
-							pk = training.getPokemons().get(i);
+						if(option.equals(main.getTraining().getPokemons().get(i).getName())) {
+							pokemon = main.getTraining().getPokemons().get(i);
 							//Then We Show The Preview
-							pane_preview.getChildren().add(new ImageView(new Image(training.getPokemons().get(i).getLinkgif().toString(),100,100,false,true)));
-							link = training.getPokemons().get(i).getLinkgif();
-							System.out.println(training.getPokemons().size());
+							pane_preview.getChildren().add(new ImageView(new Image(main.getTraining().getPokemons().get(i).getLinkgif().toString(),100,100,false,true)));
+							pokemon.setLinkgif(main.getTraining().getPokemons().get(i).getLinkgif());
 							stop = true;
-						}if(times==training.getPokemons().size()) {
+						}if(times==main.getTraining().getPokemons().size()) {
 							stop = true;
 						}
 						times++;
@@ -173,8 +171,8 @@ public class MenuController{
 	public List<String>listForShow() {
 		// TODO Auto-generated method stub
 		ArrayList<String> names = new <String>ArrayList();
-		for(int i=0;i<training.getPokemons().size();i++) {	
-			names.add(training.getPokemons().get(i).getName());
+		for(int i=0;i<main.getTraining().getPokemons().size();i++) {	
+			names.add(main.getTraining().getPokemons().get(i).getName());
 		}
 		List<String> pok_names = names;
 		return names;
@@ -205,9 +203,10 @@ public class MenuController{
 			FXMLLoader loader=new FXMLLoader(getClass().getResource("Throw.fxml")); 
 			Parent showThrow = loader.load(); 
 			ThrowController trController=loader.getController(); 
-			trController.initialize(link,p);
+			trController.initialize(pokemon,p);
 			Scene sceneThrow = new Scene(showThrow);
 			Stage windowThrow =  (Stage)((Node) t.getSource()).getScene().getWindow();
+			windowThrow.getIcons().add(new Image("images/Pokebola.png"));
 			windowThrow.setScene(sceneThrow);
 			windowThrow.show();
 			
@@ -223,9 +222,11 @@ public class MenuController{
 			FXMLLoader loader=new FXMLLoader(getClass().getResource("Catch.fxml")); 
 			Parent showCatch = loader.load(); 
 			CatchController ctController=loader.getController(); 
-			ctController.initialize(link,p);
+			ctController.initialize(pokemon,p);
 			Scene sceneCatch = new Scene(showCatch);
 			Stage windowCatch =  (Stage)((Node) t.getSource()).getScene().getWindow();
+			windowCatch.getIcons().add(new Image("images/Pokebola.png"));
+			windowCatch.setTitle("CATCH MODE");
 			windowCatch.setScene(sceneCatch);
 			windowCatch.show();
 		} catch (IOException e) { 

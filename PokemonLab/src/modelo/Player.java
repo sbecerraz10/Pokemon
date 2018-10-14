@@ -68,9 +68,15 @@ public class Player implements Serializable, Comparable<Player> {
 	@Override
 	public int compareTo(Player other) {
 		// TODO Auto-generated method stub
-		 return this.getScore() > other.getScore() ? 1 : this.getScore() < other.getScore() ? -1 : 0;
-	
+		int r = 0;
+		if(this.score > other.getScore()) {
+			r = 1;
+		}else r = -1;
+		
+		return r;
 	}
+
+	
 
 
 	

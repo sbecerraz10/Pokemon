@@ -24,6 +24,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.util.Duration;
 import modelo.Player;
+import modelo.Pokemon;
 /**
  * Clase CatchController
  * @author Sebastian Becerra Z. A00352804
@@ -50,6 +51,7 @@ public class CatchController{
 	public static final int LIMIT = 600;
 	private TranslateTransition transition;
 	
+	private Main main;
 	
 	
 	
@@ -68,9 +70,9 @@ public class CatchController{
 	 * Must initialize the class
 	 * @param link: link of pokemon's gif
 	 */
-	public void initialize(URL link, Player p) {
+	public void initialize(Pokemon pk, Player p) {
 		
-		startAnimation(link);
+		startAnimation(pk.getLinkgif());
 			lbplayer_name.setText(p.getName());
 			lbscore.setText(p.getScore()+"");
 			lbtime.setText(transition.getCurrentTime().toSeconds()+"");
@@ -110,7 +112,7 @@ public class CatchController{
 		btSavegame.setOnMouseClicked(new EventHandler<MouseEvent>() {
 			@Override
 			public void handle(MouseEvent t) {
-					loadPlayers(p);
+					savePlayer(p);
 			}
 		});
 		
@@ -136,52 +138,76 @@ public class CatchController{
 	
 	
 	
-	public void savePlayer(Player player, ArrayList<Player> p) {
-
-		FileOutputStream fileOutS = null;
-		ObjectOutputStream salida = null;
-
-		try
-		{
-			
-			fileOutS = new FileOutputStream("file/players.ser");
-			salida = new ObjectOutputStream(fileOutS);
-			p.add(player);
-			salida.writeObject(p);
-			salida.close();
-			fileOutS.close();
-			
-			Alert alert = new Alert(AlertType.INFORMATION);
-			alert.setTitle("Saved");
-			alert.setHeaderText("Information");
-			alert.setContentText("The player has been saved successfully");
-			System.out.println(p);
-			alert.showAndWait();
-		}catch(FileNotFoundException e)
-		{
-			System.out.println(e.getMessage());
-		}catch(IOException e)
-		{
-			System.out.println(e.getMessage());
-		}	
+//	public void savePlayer(Player player, ArrayList<Player> p) {
+//
+//		FileOutputStream fileOutS = null;
+//		ObjectOutputStream salida = null;
+//
+//		try
+//		{
+//			
+//			fileOutS = new FileOutputStream("file/players.ser");
+//			salida = new ObjectOutputStream(fileOutS);
+//			boolean stop = false;
+////			for(int i=0;i<p.size() && !stop;i++) {
+////				if(p.get(i).getName().equals(player.getName())) {
+////					p.remove(i);
+////					p.add(i, player);
+////					stop = true;
+////				}else	p.add(player);
+////			}
+////			
+//			
+//			if(p.contains(player)) {
+//				System.out.println("SII ENTRO");
+//				int pos = p.indexOf(player);
+//				p.remove(pos);
+//				p.add(player);
+//			}else p.add(player); 
+//			
+//			
+//			
+//			salida.writeObject(p);
+//			salida.close();
+//			fileOutS.close();
+//			
+//			Alert alert = new Alert(AlertType.INFORMATION);
+//			alert.setTitle("Saved");
+//			alert.setHeaderText("Information");
+//			alert.setContentText("The player has been saved successfully");
+//			System.out.println(p);
+//			alert.showAndWait();
+//		}catch(FileNotFoundException e)
+//		{
+//			System.out.println(e.getMessage());
+//		}catch(IOException e)
+//		{
+//			System.out.println(e.getMessage());
+//		}	
+//	}
+	
+	
+	public void savePlayer(Player player) {
+		main.savePlayer(player);
 	}
 	
 	
-	public void loadPlayers(Player player) {
-		ArrayList<Player> p = new ArrayList<Player>();
-		
-		try {
-			FileInputStream filein= new FileInputStream("file/players.ser");
-			ObjectInputStream obj = new ObjectInputStream(filein);
-			p = (ArrayList<Player>) obj.readObject();
-			savePlayer(player,p);
-			obj.close();
-			filein.close();
-			System.out.println(p.size());
-		}catch(Exception e) {
-			savePlayer(player,p);
-		}
-	}
+	
+//	public void loadPlayers(Player player) {
+//		ArrayList<Player> p = new ArrayList<Player>();
+//		
+//		try {
+//			FileInputStream filein= new FileInputStream("file/players.ser");
+//			ObjectInputStream obj = new ObjectInputStream(filein);
+//			p = (ArrayList<Player>) obj.readObject();
+//			savePlayer(player);
+//			obj.close();
+//			filein.close();
+//			System.out.println(p.size());
+//		}catch(Exception e) {
+//			savePlayer(player,p);
+//		}
+//	}
 
 
 

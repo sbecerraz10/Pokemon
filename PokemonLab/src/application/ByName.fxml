@@ -1,15 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.ListView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.Pane?>
 
-
-<BorderPane prefHeight="600.0" prefWidth="800.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/10.0.1" fx:controller="application.ByNameController">
+<BorderPane prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.ByNameController">
    <center>
       <Pane prefHeight="600.0" prefWidth="800.0" BorderPane.alignment="CENTER">
          <children>
-            <ListView fx:id="list" layoutX="75.0" layoutY="65.0" prefHeight="458.0" prefWidth="304.0" />
+            <ImageView fitHeight="500.0" fitWidth="800.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../images/pokemons_wall.jpg" />
+               </image>
+            </ImageView>
+            <ListView fx:id="list" layoutX="75.0" layoutY="65.0" prefHeight="287.0" prefWidth="303.0" />
          </children>
       </Pane>
    </center>

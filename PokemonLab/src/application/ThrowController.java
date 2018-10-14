@@ -24,6 +24,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.util.Duration;
 import modelo.Player;
+import modelo.Pokemon;
 /**
  * Clase ThrowController
  * @author Sebastian Becerra Z. A00352804
@@ -45,6 +46,8 @@ public class ThrowController {
 	@FXML
 	private Label lbtime;
 	
+	private Main main;
+	
 	
 	private TranslateTransition transition;
 	
@@ -59,13 +62,17 @@ public class ThrowController {
 		
 	}
 	
+	public void lanzarMensaje() {
+		main.men();
+	}
+	
 
 	/**
 	 * Method initialize
 	 * Must initialize the class
 	 * @param link: link of pokemon's gif
 	 */
-	public void initialize(URL link,Player player) {
+	public void initialize(Pokemon pk,Player player) {
 		
 		pane_pokemon.getChildren().add(new ImageView(new Image("/images/Pokebola.png".toString(),100,100,false,true)));
 		pane_pokemon.setVisible(true);
@@ -88,7 +95,7 @@ public class ThrowController {
 		btSavegame.setOnMouseClicked(new EventHandler<MouseEvent>() {
 			@Override
 			public void handle(MouseEvent t) {
-				loadPlayers(player);
+				savePlayers(player);
 			}
 		});
 		
@@ -97,7 +104,7 @@ public class ThrowController {
 			@Override
 			public void handle(MouseEvent t) {
 				pane_pokemon.getChildren().clear();
-				pane_pokemon.getChildren().add(new ImageView(new Image(link.toString(),100,100,false,true)));
+				pane_pokemon.getChildren().add(new ImageView(new Image(pk.getLinkgif().toString(),100,100,false,true)));
 				transition.setToX(-550);
 				transition.play();
 				player.setScore(600-Player.POINT3_SCORE);
@@ -125,59 +132,80 @@ public class ThrowController {
 		});
 		
 	}
-	
 
-	
-	
-	
-	public void savePlayer(Player player, ArrayList<Player> p) {
-
-		FileOutputStream fileOutS = null;
-		ObjectOutputStream salida = null;
-
-		try
-		{
-			
-			fileOutS = new FileOutputStream("file/players.ser");
-			salida = new ObjectOutputStream(fileOutS);
-			p.add(player);
-			salida.writeObject(p);
-			salida.close();
-			fileOutS.close();
-			
-			Alert alert = new Alert(AlertType.INFORMATION);
-			alert.setTitle("Saved");
-			alert.setHeaderText("Information");
-			alert.setContentText("The player has been saved successfully");
-			System.out.println(p);
-			alert.showAndWait();
-		}catch(FileNotFoundException e)
-		{
-			System.out.println(e.getMessage());
-		}catch(IOException e)
-		{
-			System.out.println(e.getMessage());
-		}	
+	public void savePlayers(Player player) {
+		main.savePlayer(player);
 	}
 	
+
 	
 	
-	public void loadPlayers(Player player) {
-		ArrayList<Player> p = new ArrayList<Player>();
-	
-		try {
-			FileInputStream filein= new FileInputStream("file/players.ser");
-			ObjectInputStream obj = new ObjectInputStream(filein);
-			p = (ArrayList<Player>) obj.readObject();
-			savePlayer(player,p);
-			obj.close();
-			filein.close();
-			System.out.println(p.size());
-		}catch(Exception e) {
-			savePlayer(player,p);
-		}
-		
-	}
+//	
+//	public void savePlayer(Player player, ArrayList<Player> p) {
+//
+//		FileOutputStream fileOutS = null;
+//		ObjectOutputStream salida = null;
+//
+//		try
+//		{
+//			
+//			fileOutS = new FileOutputStream("file/players.ser");
+//			salida = new ObjectOutputStream(fileOutS);
+//			
+////			for(int i=0;i<p.size();i++) {
+////				if(p.get(i).equals(player)) {
+////					p.remove(i);
+////					p.contains(player);
+////					int pos = p.indexOf(player);
+////					p.remove(pos);
+////					p.add(player);
+////				}else	p.add(player);
+////			}
+//			
+//			
+//			if(p.contains(player)) {
+//				int pos = p.indexOf(player);
+//				p.remove(pos);
+//				p.add(player);
+//			}else p.add(player); 
+//			
+//			salida.writeObject(p);
+//			salida.close();
+//			fileOutS.close();
+//			
+//			Alert alert = new Alert(AlertType.INFORMATION);
+//			alert.setTitle("Saved");
+//			alert.setHeaderText("Information");
+//			alert.setContentText("The player has been saved successfully");
+//			System.out.println(p);
+//			alert.showAndWait();
+//		}catch(FileNotFoundException e)
+//		{
+//			System.out.println(e.getMessage());
+//		}catch(IOException e)
+//		{
+//			System.out.println(e.getMessage());
+//		}	
+//	}
+//	
+//	
+//	
+//	public void loadPlayers(Player player) {
+//		ArrayList<Player> p = new ArrayList<Player>();
+//	
+//		try {
+//			FileInputStream filein= new FileInputStream("file/players.ser");
+//			ObjectInputStream obj = new ObjectInputStream(filein);
+//			p = (ArrayList<Player>) obj.readObject();
+//			savePlayer(player,p);
+//			obj.close();
+//			filein.close();
+//			System.out.println(p.size());
+//		}catch(Exception e) {
+//			savePlayer(player,p);
+//		}
+//		
+//	}
 	
 	
 

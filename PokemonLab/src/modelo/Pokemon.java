@@ -11,7 +11,7 @@ import javafx.scene.image.ImageView;
  * @version sep-18-2018
  */
 
-public class Pokemon implements Serializable{
+public class Pokemon implements Serializable, Comparable<Pokemon>{
 	
 	
 	//Atributos
@@ -41,6 +41,18 @@ public class Pokemon implements Serializable{
 
 
 	
+
+	public Pokemon() {
+		// TODO Auto-generated constructor stub
+	}
+
+	public Pokemon(String name) {
+		this.name = name;
+	}
+
+
+
+
 
 	/***
 	 * Method getName
@@ -98,6 +110,13 @@ public class Pokemon implements Serializable{
 	 */
 	public void setLinkgif(URL linkgif) {
 		this.linkgif = linkgif;
+	}
+
+
+
+	@Override
+	public int compareTo(Pokemon p1) { 
+		return this.getName().compareToIgnoreCase(p1.getName());
 	}
 	
 	

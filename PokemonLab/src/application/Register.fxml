@@ -29,6 +29,26 @@
                   <Font name="Dubai Light" size="18.0" />
                </font>
             </Button>
+            <Button fx:id="btsearchplayer" layoutX="28.0" layoutY="264.0" mnemonicParsing="false" prefHeight="74.0" prefWidth="199.0" text="Search Player">
+               <font>
+                  <Font name="Dubai Light" size="18.0" />
+               </font>
+            </Button>
+            <Button fx:id="btsearchpokemon" layoutX="509.0" layoutY="264.0" mnemonicParsing="false" prefHeight="74.0" prefWidth="199.0" text="Search Pokemon">
+               <font>
+                  <Font name="Dubai Light" size="18.0" />
+               </font>
+            </Button>
+            <Button fx:id="btsearchplayer1" layoutX="28.0" layoutY="90.0" mnemonicParsing="false" prefHeight="74.0" prefWidth="199.0" text="Search One Player">
+               <font>
+                  <Font name="Dubai Light" size="18.0" />
+               </font>
+            </Button>
+            <Button fx:id="btsearchpokemon1" layoutX="509.0" layoutY="90.0" mnemonicParsing="false" prefHeight="74.0" prefWidth="199.0" text="Search One Pokemon">
+               <font>
+                  <Font name="Dubai Light" size="18.0" />
+               </font>
+            </Button>
          </children>
       </Pane>
    </center>
