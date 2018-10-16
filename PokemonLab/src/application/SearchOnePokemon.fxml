@@ -4,6 +4,8 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
@@ -12,8 +14,14 @@
    <bottom>
       <Pane prefHeight="600.0" prefWidth="600.0" BorderPane.alignment="CENTER">
          <children>
+            <ImageView fitHeight="600.0" fitWidth="600.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../images/pokemon_gwall1.jpg" />
+               </image>
+            </ImageView>
             <TextField fx:id="textfield" layoutX="284.0" layoutY="56.0" prefHeight="31.0" prefWidth="199.0" promptText="Search me " />
-            <ListView fx:id="listview" layoutX="63.0" layoutY="136.0" prefHeight="393.0" prefWidth="461.0" />
+            <Button fx:id="btsearch" layoutX="350.0" layoutY="91.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="112.0" text="Search Pokemon" />
+            <ListView fx:id="listview" layoutX="63.0" layoutY="136.0" prefHeight="313.0" prefWidth="188.0" />
             <Label layoutX="129.0" layoutY="54.0" prefHeight="37.0" prefWidth="138.0" text="Write the name:">
                <font>
                   <Font size="18.0" />

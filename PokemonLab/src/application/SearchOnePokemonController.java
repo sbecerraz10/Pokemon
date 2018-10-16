@@ -75,6 +75,33 @@ public class SearchOnePokemonController {
 			}
 		});
 		
+		btsearch.setOnMouseClicked(new EventHandler<Event>() {
+			
+			public void handle(Event t) {
+				String name = textfield.getText();
+				try {
+					int pos = main.getTraining().searchPokemon(name);
+					if(pokemons.get(pos)==null) {
+						Alert alert = new Alert(AlertType.INFORMATION);
+						alert.setTitle("404 EROR");
+						alert.setHeaderText("404 ERROR- Pokemon doesn't exist");
+						alert.setContentText("Couldn't find the pok");
+						alert.showAndWait();	
+					}else {
+					listview.getItems().addAll(pokemons.get(pos).getName());
+					}
+				}catch(NullPointerException e) {
+					e.printStackTrace();
+				}catch(IndexOutOfBoundsException e) {
+					Alert alert = new Alert(AlertType.INFORMATION);
+					alert.setTitle("404 EROR");
+					alert.setHeaderText("404 ERROR- Pokemon doesn't exist");
+					alert.setContentText("Couldn't find the pok");
+					alert.showAndWait();	
+				}
+			}
+		});
+		
 		btback.setOnMouseClicked(new EventHandler<MouseEvent>() {
 			
 			public void handle(MouseEvent t) {

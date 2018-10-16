@@ -82,6 +82,35 @@ public class SearchOnePlayerController {
 			}
 		});
 		
+		btsearch.setOnMouseClicked(new EventHandler<Event>() {
+			
+			public void handle(Event t) {
+				String name = textfield.getText();
+				try {
+					int pos = main.getTraining().searchPlayer(name);
+					if(players.get(pos)==null) {
+						Alert alert = new Alert(AlertType.INFORMATION);
+						alert.setTitle("404 EROR");
+						alert.setHeaderText("404 ERROR- Player doesn't exist");
+						alert.setContentText("Couldn't find the player");
+						alert.showAndWait();	
+					}else {
+					listview.getItems().addAll(players.get(pos).getName() + " " + players.get(pos).getScore());
+					}
+				}catch(NullPointerException e) {
+					e.printStackTrace();
+				}catch(IndexOutOfBoundsException e) {
+					Alert alert = new Alert(AlertType.INFORMATION);
+					alert.setTitle("404 EROR");
+					alert.setHeaderText("404 ERROR- Player doesn't exist");
+					alert.setContentText("Couldn't find the player");
+					alert.showAndWait();	
+				}
+			}
+		});
+		
+		
+		
 		btback.setOnMouseClicked(new EventHandler<MouseEvent>() {
 			
 			public void handle(MouseEvent t) {
