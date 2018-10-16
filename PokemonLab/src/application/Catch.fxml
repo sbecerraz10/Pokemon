@@ -51,7 +51,9 @@
                   <Font name="Dubai Light" size="14.0" />
                </font>
             </Label>
-            <Button fx:id="btSavegame" layoutX="600.0" layoutY="50.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="78.0" text="Save Game" />
+            <Button fx:id="btSavegame" layoutX="629.0" layoutY="27.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="112.0" style="-fx-background-color: #000080; -fx-border-color: #00000000;" text="Save Game" textFill="WHITE" />
+            <Button fx:id="btbyscore" layoutX="629.0" layoutY="87.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="112.0" style="-fx-background-color: #000080; -fx-border-color: #00000000;" text="Stats By Score" textFill="WHITE" />
+            <Button fx:id="btbyname" layoutX="629.0" layoutY="148.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="112.0" style="-fx-background-color: #000080; -fx-border-color: #00000000;" text="Stats By Name" textFill="WHITE" />
          </children>
          <BorderPane.margin>
             <Insets />

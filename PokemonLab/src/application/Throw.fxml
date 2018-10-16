@@ -21,7 +21,6 @@
             </ImageView>
             <Pane fx:id="pane_pokemon" layoutX="600.0" layoutY="230.0" prefHeight="127.0" prefWidth="150.0" />
             <Pane fx:id="pane_flag" layoutX="50.0" layoutY="230.0" prefHeight="122.0" prefWidth="135.0" />
-            <Button fx:id="btSavegame" layoutX="609.0" layoutY="20.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="117.0" text="Save Game" />
             <Label layoutX="22.0" layoutY="12.0" text="Player Name:">
                <font>
                   <Font name="Dubai Light" size="14.0" />
@@ -52,6 +51,9 @@
                   <Font name="Dubai Light" size="14.0" />
                </font>
             </Label>
+            <Button fx:id="btSavegame" layoutX="600.0" layoutY="27.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="112.0" style="-fx-background-color: #000080; -fx-border-color: #00000000;" text="Save Game" textFill="WHITE" />
+            <Button fx:id="btbyscore" layoutX="600.0" layoutY="87.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="112.0" style="-fx-background-color: #000080; -fx-border-color: #00000000;" text="Stats By Score" textFill="WHITE" />
+            <Button fx:id="btbyname" layoutX="600.0" layoutY="143.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="112.0" style="-fx-background-color: #000080; -fx-border-color: #00000000;" text="Stats By Name" textFill="WHITE" />
          </children>
          <BorderPane.margin>
             <Insets />

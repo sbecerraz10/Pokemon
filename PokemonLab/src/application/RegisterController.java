@@ -163,7 +163,18 @@ public class RegisterController {
 					e.printStackTrace();
 				}
 			}
-		});		
+		});
+		
+		btsearchpokemon.setOnMouseClicked(new EventHandler<MouseEvent>() {
+			public void handle(MouseEvent t) {
+				try {
+					openSearchPokemon(t);
+				}catch(Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+		
 	}
 	public void setWallpaper() {
 		Image image1 = new Image("images/pokemon-background-.jpg");
@@ -233,7 +244,21 @@ public class RegisterController {
 			e.printStackTrace();
 		}
 	}
+
 	
+	public void openSearchPokemon(MouseEvent t) throws Exception {
+		try {
+			FXMLLoader loader =new FXMLLoader(getClass().getResource("SearchPokemon.fxml")); 
+			Parent showMenu = loader.load();
+			Scene sceneMenu = new Scene(showMenu);
+			Stage windowMenu = (Stage)((Node) t.getSource()).getScene().getWindow();
+			windowMenu.setScene(sceneMenu);
+			windowMenu.getIcons().add(new Image("images/Pokebola.png"));
+			windowMenu.show();
+		}catch(IOException e) {
+			e.printStackTrace();
+		}
+	}
 	public void openByName(MouseEvent t) throws Exception {
 		try {
 			FXMLLoader loader =new FXMLLoader(getClass().getResource("ByName.fxml")); 

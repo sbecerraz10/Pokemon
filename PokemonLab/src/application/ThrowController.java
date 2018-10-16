@@ -14,6 +14,10 @@ import javafx.animation.TranslateTransition;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -22,13 +26,15 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
+import javafx.stage.Stage;
 import javafx.util.Duration;
 import modelo.Player;
 import modelo.Pokemon;
+import modelo.Training;
 /**
  * Clase ThrowController
  * @author Sebastian Becerra Z. A00352804
- * @version sep-18-2018
+ * @version oct-15-2018
  */
 
 public class ThrowController {
@@ -45,6 +51,10 @@ public class ThrowController {
 	private Label lbscore;
 	@FXML
 	private Label lbtime;
+	@FXML
+	private Button btbyname;
+	@FXML
+	private Button btbyscore;
 	
 	private Main main;
 	
@@ -62,9 +72,6 @@ public class ThrowController {
 		
 	}
 	
-	public void lanzarMensaje() {
-		main.men();
-	}
 	
 
 	/**
@@ -107,7 +114,7 @@ public class ThrowController {
 				pane_pokemon.getChildren().add(new ImageView(new Image(pk.getLinkgif().toString(),100,100,false,true)));
 				transition.setToX(-550);
 				transition.play();
-				player.setScore(600-Player.POINT3_SCORE);
+				player.setScore(Training.LIMIT-Player.POINT3_SCORE);
 				lbscore.setText(player.getScore()+"");
 			}
 			
@@ -131,6 +138,31 @@ public class ThrowController {
 			
 		});
 		
+		
+		btbyname.setOnMouseClicked(new EventHandler<MouseEvent>() {
+			
+			public void handle(MouseEvent t) {
+				try {
+					openByName(t);
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		});
+		
+		btbyscore.setOnMouseClicked(new EventHandler<MouseEvent>() {
+			
+			public void handle(MouseEvent t) {
+				try {
+					openByScore(t);
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		});
+		
 	}
 
 	public void savePlayers(Player player) {
@@ -139,75 +171,35 @@ public class ThrowController {
 	
 
 	
+
+	public void openByName(MouseEvent t) throws Exception {
+		try {
+			FXMLLoader loader =new FXMLLoader(getClass().getResource("ByName.fxml")); 
+			Parent showMenu = loader.load();
+			ByNameController mc =  loader.getController();
+			Scene sceneMenu = new Scene(showMenu);
+			Stage windowMenu = (Stage)((Node) t.getSource()).getScene().getWindow();
+			windowMenu.getIcons().add(new Image("images/Pokebola.png"));
+			windowMenu.setScene(sceneMenu);
+			windowMenu.show();
+		}catch(IOException e) {
+			e.printStackTrace();
+		}
+	}
 	
-//	
-//	public void savePlayer(Player player, ArrayList<Player> p) {
-//
-//		FileOutputStream fileOutS = null;
-//		ObjectOutputStream salida = null;
-//
-//		try
-//		{
-//			
-//			fileOutS = new FileOutputStream("file/players.ser");
-//			salida = new ObjectOutputStream(fileOutS);
-//			
-////			for(int i=0;i<p.size();i++) {
-////				if(p.get(i).equals(player)) {
-////					p.remove(i);
-////					p.contains(player);
-////					int pos = p.indexOf(player);
-////					p.remove(pos);
-////					p.add(player);
-////				}else	p.add(player);
-////			}
-//			
-//			
-//			if(p.contains(player)) {
-//				int pos = p.indexOf(player);
-//				p.remove(pos);
-//				p.add(player);
-//			}else p.add(player); 
-//			
-//			salida.writeObject(p);
-//			salida.close();
-//			fileOutS.close();
-//			
-//			Alert alert = new Alert(AlertType.INFORMATION);
-//			alert.setTitle("Saved");
-//			alert.setHeaderText("Information");
-//			alert.setContentText("The player has been saved successfully");
-//			System.out.println(p);
-//			alert.showAndWait();
-//		}catch(FileNotFoundException e)
-//		{
-//			System.out.println(e.getMessage());
-//		}catch(IOException e)
-//		{
-//			System.out.println(e.getMessage());
-//		}	
-//	}
-//	
-//	
-//	
-//	public void loadPlayers(Player player) {
-//		ArrayList<Player> p = new ArrayList<Player>();
-//	
-//		try {
-//			FileInputStream filein= new FileInputStream("file/players.ser");
-//			ObjectInputStream obj = new ObjectInputStream(filein);
-//			p = (ArrayList<Player>) obj.readObject();
-//			savePlayer(player,p);
-//			obj.close();
-//			filein.close();
-//			System.out.println(p.size());
-//		}catch(Exception e) {
-//			savePlayer(player,p);
-//		}
-//		
-//	}
-	
-	
+	public void openByScore(MouseEvent t) throws Exception {
+		try {
+			FXMLLoader loader =new FXMLLoader(getClass().getResource("ByScore.fxml")); 
+			Parent showMenu = loader.load();
+			Scene sceneMenu = new Scene(showMenu);
+			Stage windowMenu = (Stage)((Node) t.getSource()).getScene().getWindow();
+			windowMenu.setScene(sceneMenu);
+			windowMenu.getIcons().add(new Image("images/Pokebola.png"));
+			windowMenu.show();
+		}catch(IOException e) {
+			e.printStackTrace();
+		}
+	}
 
 	
 

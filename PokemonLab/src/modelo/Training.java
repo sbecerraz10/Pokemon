@@ -22,7 +22,11 @@ import javafx.scene.image.ImageView;
  */
 
 public class Training {
-	//Atributos
+	
+	
+	//Atributos y Constantes
+	public static final int LIMIT = 600;
+	
 	private ArrayList<Pokemon> pokemons;
 	
 	private ArrayList<Player> players;
@@ -145,14 +149,6 @@ public class Training {
 			fileOutS = new FileOutputStream("file/players.ser");
 			salida = new ObjectOutputStream(fileOutS);
 			boolean stop = false;
-//			for(int i=0;i<p.size() && !stop;i++) {
-//				if(p.get(i).getName().equals(player.getName())) {
-//					p.remove(i);
-//					p.add(i, player);
-//					stop = true;
-//				}else	p.add(player);
-//			}
-//			
 			
 			if(players.contains(p)) {
 				System.out.println("SII ENTRO");
